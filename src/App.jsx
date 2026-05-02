@@ -653,12 +653,24 @@ const WebGLGlobe = ({
     const globeGeometry = new THREE.SphereGeometry(globeRadius, 64, 64);
 
     // Load required maps
-    const colorMap = textureLoader.load("/earth-color.jpg", (tex) => {
-      console.log("Success! Map size:", tex.image.width, "x", tex.image.height);
-      tex.needsUpdate = true;
-    });
-    const bumpMap = textureLoader.load("/earth-topo.png");
-    const waterMap = textureLoader.load("/earth-water.png");
+    const colorMap = textureLoader.load(
+      "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg",
+      (tex) => {
+        console.log(
+          "Success! Map size:",
+          tex.image.width,
+          "x",
+          tex.image.height,
+        );
+        tex.needsUpdate = true;
+      },
+    );
+    const bumpMap = textureLoader.load(
+      "https://unpkg.com/three-globe/example/img/earth-topology.png",
+    );
+    const waterMap = textureLoader.load(
+      "https://unpkg.com/three-globe/example/img/earth-night.jpg",
+    );
 
     // Layer 0: Realistic
     const matRealistic = new THREE.MeshStandardMaterial({
